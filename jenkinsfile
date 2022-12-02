@@ -1,0 +1,20 @@
+pipeline{
+    agent {label 'DOCKER' }
+    stages {
+        stage ('git clone') {
+            steps {
+                git branch: 'master', url:'https://github.com/sureshjala/dockerfiles.git'
+            }
+        }
+        stage ('building image') {
+            steps {
+                sh "docker build -t springpetclinic ."
+            }
+        }
+        stage ('docker container list') {
+            steps {
+                sh "docker container ls -a"
+            }
+        }
+    }
+}
