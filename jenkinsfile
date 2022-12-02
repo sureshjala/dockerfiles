@@ -16,5 +16,10 @@ pipeline{
                 sh "docker container ls -a"
             }
         }
+        stage ('docker image list') {
+            steps {
+                sh "docker image ls"
+            }
+        }
     }
 }
